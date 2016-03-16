@@ -116,4 +116,21 @@ describe("mergeTree", () => {
     result.contents[0].contents[0].trixie.should.equal(10001);
     result.contents[0].contents[1].trixie.should.equal(10002);
   });
+
+
+  it("if we don't change anything, it must return the same structure.", () => {
+    const data = getData();
+    const result = mergeTree(
+      data,
+      "contents",
+      [
+        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.1", trixie: 10001 } },
+        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.2", trixie: 10002 } }
+      ],
+      (dir, b) => dir.name === b,
+      (item, leaf) => item
+    );
+    result.should.not.equal(data);
+    JSON.stringify(result).should.equal(JSON.stringify(data));
+  });
 });
