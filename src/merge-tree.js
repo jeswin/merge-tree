@@ -1,6 +1,6 @@
-export function mergeTree(obj, field, crumbs, predicate, mutation) {
-
-  let currentItem; //We don't change obj
+function mergeTree(obj, field, crumbs, predicate, mutation) {
+  //We don't change obj
+  let currentItem;
 
   //find the crumbs which predicate() true on this sub-tree
   const matchedBranchCrumbs = crumbs.filter(crumb => crumb.branches.length > 0 && predicate(obj, crumb.branches[0]));
@@ -20,6 +20,7 @@ export function mergeTree(obj, field, crumbs, predicate, mutation) {
       currentItem = mutation(currentItem, crumb.leaf);
     }
   }
-
   return currentItem || obj;
 }
+
+export default mergeTree;
