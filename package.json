@@ -1,0 +1,30 @@
+{
+  "author": "Jeswin Kumar <jeswinpk@agilehead.com>",
+  "name": "merge-tree",
+  "version": "0.0.1",
+  "description": "Immutability helpers for recursive data structures.",
+  "scripts": {
+    "test": "mocha dist/test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodejam/merge-tree.git"
+  },
+  "devDependencies": {
+    "babel-polyfill": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-2": "*",
+    "babel-plugin-transform-class-properties": "*",
+    "babel-relay-plugin-loader": "*",
+    "source-map-loader": "*",
+    "babel-loader": "*",
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "dist/isotropy-router",
+  "keywords": [
+    "immutable"
+  ],
+  "license": "MIT"
+}
