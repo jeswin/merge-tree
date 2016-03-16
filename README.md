@@ -11,7 +11,7 @@ If you're sticking to plain ol' JS, Object.assign() works quite well.
 Until you get to recursive data structures or trees.
 
 In the following example, let's say we want a new object with the "enabled" value of leaf node "x1/x1.1/x1.1.1/x1.1.1.2" set to false.
-Object.assign() is not useful here.
+Object.assign() will not work here because of the nesting.
 ```
 data = {
   name: "x1",
@@ -53,7 +53,7 @@ const result = mergeTree(
   //array containing children
   "contents",
 
-  //leaf nodes to change
+  //nodes to change. You can change any node, not just the edges.
   [
     { branches: ["x1", "x1.1", "x1.1.1"], leaf: { name: "x1.1.1.1", enabled: false } },
     { branches: ["x1", "x1.1", "x1.1.1"], leaf: { name: "x1.1.1.2", enabled: false } }
