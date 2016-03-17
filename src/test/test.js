@@ -46,12 +46,12 @@ describe("mergeTree", () => {
       data,
       "contents",
       [
-        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.1", trixie: 10001 } },
-        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.2", trixie: 10002 } }
+        { parents: ["x1", "x1.1"], target: { name: "x1.1.1", trixie: 10001 } },
+        { parents: ["x1", "x1.1"], target: { name: "x1.1.2", trixie: 10002 } }
       ],
       (dir, b) => dir.name === b,
-      (item, leaf) => item.name === leaf.name ?
-        Object.assign({}, item, { mixie: item.mixie || leaf.mixie, dixie: item.dixie || leaf.dixie, trixie: item.trixie || leaf.trixie }) :
+      (item, target) => item.name === target.name ?
+        Object.assign({}, item, { mixie: item.mixie || target.mixie, dixie: item.dixie || target.dixie, trixie: item.trixie || target.trixie }) :
         item
     );
     result.contents[0].contents[0].trixie.should.equal(10001);
@@ -65,13 +65,13 @@ describe("mergeTree", () => {
       data,
       "contents",
       [
-        { branches: ["x1", "x1.1", "x1.1.1"], leaf: { name: "x1.1.1.1", mixie: 101 } },
-        { branches: ["x1", "x1.1", "x1.1.1"], leaf: { name: "x1.1.1.1", dixie: 1001 } },
-        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.1", trixie: 10001 } }
+        { parents: ["x1", "x1.1", "x1.1.1"], target: { name: "x1.1.1.1", mixie: 101 } },
+        { parents: ["x1", "x1.1", "x1.1.1"], target: { name: "x1.1.1.1", dixie: 1001 } },
+        { parents: ["x1", "x1.1"], target: { name: "x1.1.1", trixie: 10001 } }
       ],
       (dir, b) => dir.name === b,
-      (item, leaf) => item.name === leaf.name ?
-        Object.assign({}, item, { mixie: item.mixie || leaf.mixie, dixie: item.dixie || leaf.dixie, trixie: item.trixie || leaf.trixie }) :
+      (item, target) => item.name === target.name ?
+        Object.assign({}, item, { mixie: item.mixie || target.mixie, dixie: item.dixie || target.dixie, trixie: item.trixie || target.trixie }) :
         item
     );
     result.contents[0].contents[0].contents[0].mixie.should.equal(101);
@@ -80,37 +80,37 @@ describe("mergeTree", () => {
   });
 
 
-  it("return original value when branches mismatch", () => {
+  it("return original value when parents mismatch", () => {
     const data = getData();
     const result = mergeTree(
       data,
       "contents",
       [
-        { branches: ["invalid"], leaf: { name: "x1.1.1", trixie: 10001 } }
+        { parents: ["invalid"], target: { name: "x1.1.1", trixie: 10001 } }
       ],
       (dir, b) => dir.name === b,
-      (item, leaf) => item.name === leaf.name ?
-        Object.assign({}, item, { trixie: item.trixie || leaf.trixie }) :
+      (item, target) => item.name === target.name ?
+        Object.assign({}, item, { trixie: item.trixie || target.trixie }) :
         item
     );
     result.should.equal(data);
   });
 
 
-  it("change tree even when some branches are mismatched", () => {
+  it("change tree even when some parents are mismatched", () => {
     const data = getData();
     const result = mergeTree(
       data,
       "contents",
       [
-        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.1", trixie: 10001 } },
-        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.2", trixie: 10002 } },
-        { branches: ["invalid1", "x1.1"], leaf: { name: "x1.1.2", trixie: 10002 } },
-        { branches: ["invalid2", "x1.1"], leaf: { name: "x1.1.2", trixie: 10002 } }
+        { parents: ["x1", "x1.1"], target: { name: "x1.1.1", trixie: 10001 } },
+        { parents: ["x1", "x1.1"], target: { name: "x1.1.2", trixie: 10002 } },
+        { parents: ["invalid1", "x1.1"], target: { name: "x1.1.2", trixie: 10002 } },
+        { parents: ["invalid2", "x1.1"], target: { name: "x1.1.2", trixie: 10002 } }
       ],
       (dir, b) => dir.name === b,
-      (item, leaf) => item.name === leaf.name ?
-        Object.assign({}, item, { mixie: item.mixie || leaf.mixie, dixie: item.dixie || leaf.dixie, trixie: item.trixie || leaf.trixie }) :
+      (item, target) => item.name === target.name ?
+        Object.assign({}, item, { mixie: item.mixie || target.mixie, dixie: item.dixie || target.dixie, trixie: item.trixie || target.trixie }) :
         item
     );
     result.contents[0].contents[0].trixie.should.equal(10001);
@@ -124,11 +124,11 @@ describe("mergeTree", () => {
       data,
       "contents",
       [
-        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.1", trixie: 10001 } },
-        { branches: ["x1", "x1.1"], leaf: { name: "x1.1.2", trixie: 10002 } }
+        { parents: ["x1", "x1.1"], target: { name: "x1.1.1", trixie: 10001 } },
+        { parents: ["x1", "x1.1"], target: { name: "x1.1.2", trixie: 10002 } }
       ],
       (dir, b) => dir.name === b,
-      (item, leaf) => item
+      (item, target) => item
     );
     result.should.not.equal(data);
     JSON.stringify(result).should.equal(JSON.stringify(data));

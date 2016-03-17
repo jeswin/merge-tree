@@ -92,11 +92,11 @@ timeIt("merge-tree", () => {
     state,
     "contents",
     [
-      { branches: ["hello", "hello", "hello"], leaf: { name: "hello", enabled: false } }
+      { parents: ["hello", "hello", "hello"], target: { name: "hello", enabled: false } }
     ],
     (dir, b) => dir.name === b,
-    (item, leaf) => item.name === leaf.name ?
-      Object.assign({}, item, { enabled: leaf.enabled }) :
+    (item, target) => item.name === target.name ?
+      Object.assign({}, item, { enabled: target.enabled }) :
       item
   );
 }, 1000);

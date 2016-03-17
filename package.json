@@ -1,7 +1,7 @@
 {
   "author": "Jeswin Kumar <jeswinpk@agilehead.com>",
   "name": "merge-tree",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Returns a new tree with a mutation applied, without destroying the original tree.",
   "scripts": {
     "test": "mocha dist/test/test.js"
