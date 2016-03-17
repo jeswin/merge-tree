@@ -45,7 +45,7 @@ Here's how you do it with merge tree
 ```
 npm install merge-tree;
 
-import { mergeTree } from "merge-tree";
+import mergeTree from "merge-tree";
 const result = mergeTree(
   //data structure
   data,
