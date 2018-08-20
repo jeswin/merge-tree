@@ -1,6 +1,6 @@
 import __polyfill from "babel-polyfill";
 import should from 'should';
-import mergeTree from "../merge-tree";
+import mergeTree from "../";
 
 const getData = function() {
   let result = { name: "hello", contents: [] };
