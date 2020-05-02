@@ -1,7 +1,7 @@
 {
   "author": "Jeswin Kumar <jeswinpk@agilehead.com>",
   "name": "merge-tree",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "Returns a new tree with a mutation applied, without destroying the original tree.",
   "scripts": {
     "test": "mocha dist/test/test.js"
@@ -11,16 +11,16 @@
     "url": "https://github.com/jeswin/merge-tree.git"
   },
   "devDependencies": {
-    "babel-loader": "*",
-    "babel-plugin-transform-class-properties": "*",
-    "babel-polyfill": "*",
-    "babel-preset-es2015": "*",
-    "babel-preset-react": "*",
-    "babel-preset-stage-2": "*",
-    "babel-relay-plugin-loader": "*",
-    "mocha": "*",
-    "should": "*",
-    "source-map-loader": "*"
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-relay-plugin-loader": "^0.11.0",
+    "mocha": "^7.1.2",
+    "should": "^13.2.3",
+    "source-map-loader": "^0.2.4"
   },
   "main": "dist/index.js",
   "keywords": [
