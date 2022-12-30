@@ -18,7 +18,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-relay-plugin-loader": "^0.11.0",
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "should": "^13.2.3",
     "source-map-loader": "^0.2.4"
   },
